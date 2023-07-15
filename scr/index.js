@@ -4,6 +4,8 @@ function convertToCelsius(event) {
   celsiusLink.classList.add("active");
   let temp = document.querySelector("#temp");
   temp.innerHTML = Math.round(celsiusTemp);
+  let wind = document.querySelector("#wind");
+  wind.innerHTML = Math.round(meterWindSpeed) + ` km/h`;
 }
 
 function convertToFahrenheit(event) {
@@ -13,6 +15,9 @@ function convertToFahrenheit(event) {
   let temp = document.querySelector("#temp");
   let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
   temp.innerHTML = Math.round(fahrenheitTemp);
+  let wind = document.querySelector("#wind");
+  let milesSpeed = meterWindSpeed * 2.34;
+  wind.innerHTML = Math.round(milesSpeed) + ` mph`;
 }
 
 let celsiusLink = document.querySelector("#celsius-link");
@@ -53,9 +58,9 @@ function showWeather(response) {
   document.querySelector("#temp").innerHTML = Math.round(celsiusTemp);
 
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-  document.querySelector("#wind").innerHTML = Math.round(
-    response.data.wind.speed
-  );
+  meterWindSpeed = response.data.wind.speed;
+  document.querySelector("#wind").innerHTML =
+    Math.round(meterWindSpeed) + ` km/h`;
   document.querySelector("#description").innerHTML =
     response.data.weather[0].main;
 }
