@@ -1,19 +1,19 @@
-// function convertToCelsius(event) {
-//   event.preventDefault();
-//   let temp = document.querySelector("#temp");
-//   showWeather();
-// }
+function convertToCelsius(event) {
+  event.preventDefault();
+  let temp = document.querySelector("#temp");
+  showWeather();
+}
 
-// function convertToFahrenheit(event) {
-//   event.preventDefault();
-//   let temp = document.querySelector("#temp");
-//   temp.innerHTML = 66;
-// }
+function convertToFahrenheit(event) {
+  event.preventDefault();
+  let temp = document.querySelector("#temp");
+  temp.innerHTML = 66;
+}
 
-// let celsiusLink = document.querySelector("#celsius-link");
-// celsiusLink.addEventListener("click", convertToCelsius);
-// let fahrenheitLink = document.querySelector("#fahrenheit-link");
-// fahrenheitLink.addEventListener("click", convertToFahrenheit);
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", convertToCelsius);
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", convertToFahrenheit);
 
 function currentDateTime(date) {
   let weeksName = [
@@ -59,7 +59,7 @@ function showWeather(response) {
 function search(city) {
   let apiKey = "2e83e559867c8706e92fdf33c55ffaf1";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-
+  console.log(apiUrl);
   axios.get(apiUrl).then(showWeather);
 }
 
@@ -68,8 +68,21 @@ function handleSubmit(event) {
   let city = document.querySelector("#city-input").value;
   search(city);
 }
+function showLocation(position) {
+  let apiKey = "2e83e559867c8706e92fdf33c55ffaf1";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(showWeather);
+}
+function getCurrentLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(showLocation);
+}
 
 let searchForm = document.querySelector("#search-input");
 searchForm.addEventListener("submit", handleSubmit);
+
+let locationButton = document.querySelector("#current-location");
+locationButton.addEventListener("click", getCurrentLocation);
 
 search("Toronto");
