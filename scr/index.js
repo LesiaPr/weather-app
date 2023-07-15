@@ -1,13 +1,18 @@
 function convertToCelsius(event) {
   event.preventDefault();
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
   let temp = document.querySelector("#temp");
-  showWeather();
+  temp.innerHTML = Math.round(celsiusTemp);
 }
 
 function convertToFahrenheit(event) {
   event.preventDefault();
+  fahrenheitLink.classList.add("active");
+  celsiusLink.classList.remove("active");
   let temp = document.querySelector("#temp");
-  temp.innerHTML = 66;
+  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
+  temp.innerHTML = Math.round(fahrenheitTemp);
 }
 
 let celsiusLink = document.querySelector("#celsius-link");
@@ -44,9 +49,8 @@ currentDay.innerHTML = currentDateTime(date);
 
 function showWeather(response) {
   document.querySelector("#city").innerHTML = response.data.name;
-  document.querySelector("#temp").innerHTML = Math.round(
-    response.data.main.temp
-  );
+  celsiusTemp = response.data.main.temp;
+  document.querySelector("#temp").innerHTML = Math.round(celsiusTemp);
 
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
@@ -84,5 +88,6 @@ searchForm.addEventListener("submit", handleSubmit);
 
 let locationButton = document.querySelector("#current-location");
 locationButton.addEventListener("click", getCurrentLocation);
+let celsiusTemp = null;
 
 search("Toronto");
