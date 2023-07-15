@@ -6,7 +6,9 @@
   font-family: Georgia, "Times New Roman", Times, serif;
   border: 1px solid #7c7c7c;
   border-radius: 10px;
-  padding: 20px;
+  box-shadow: 0px 5px 18px 4px rgba(0, 0, 0, 0.2);
+  padding: 35px 25px 20px;
+  background: linear-gradient(to top, #dfe9f3 0%, white 100%);
 }
 h1 {
   font-size: 35px;
