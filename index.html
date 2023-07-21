@@ -38,37 +38,67 @@
             </div>
             <div class="col-3">
               <button class="btn btn-secondary w-100" id="current-location">
-                Current
+                Location
               </button>
             </div>
           </div>
         </form>
-        <div class="weather-app1">
+        <div class="description-app">
           <h1 id="city"></h1>
-          <p>Last updated:</p>
-          <p id="current-date"></p>
+          <h2 class="country" id="country"></h2>
+          <div class="current-time" id="current-date"></div>
         </div>
-        <div class="row">
-          <div class="col-6">
-            <div class="clearfix">
-              <img src="image/cloudy.png" class="weather-icon float-left" />
-              <div class="float-left">
-                <span class="current-temp" id="temp"></span>
-                <span class="celsius-fahrenheit">
-                  <a href="#" id="celsius-link" class="active">°C</a>
-                  |
-                  <a href="#" id="fahrenheit-link">°F</a>
-                </span>
+        <div class="container text-center">
+          <div class="row align-items-center">
+            <div class="col">
+              <img src="" class="image-icon" id="icon" />
+              <span class="current-temp" id="temp"></span>
+              <div class="degree">
+                <a href="#" class="active" id="celsius-link">&deg;C</a>
+                |
+                <a href="#" id="fahrenheit-link">&deg;F</a>
               </div>
             </div>
           </div>
-          <div class="col-6">
-            <ul class="description">
-              <li class="weather-description" id="description"></li>
-              <li>Wind: <span class="wind" id="wind"></span></li>
-              <li>Humidity: <span class="humidity" id="humidity"></span> %</li>
-            </ul>
+
+          <div class="temp-description">
+            <div class="temp-max" id="temp-max"></div>
+            <span class="space">/</span>
+
+            <div class="temp-min" id="temp-min"></div>
+            <span class="border"></span>
+
+            <div class="feels-like">Feels like:</div>
+
+            <span id="feels-like"></span>
           </div>
+
+          <div class="description-weather">
+            <div class="row align-items-center">
+              <div class="col">
+                <img
+                  src="image/wind.png"
+                  width="35px"
+                  class="image-icon-wind"
+                  id="icon"
+                />
+                <div class="wind"></div>
+                Wind: <span id="wind"></span>
+              </div>
+
+              <div class="col">
+                <img
+                  src="image/humidity.png"
+                  width="30px"
+                  class="image-icon-humidity"
+                  id="icon"
+                />
+                <div class="humidity"></div>
+                Humidity: <span id="humidity"></span>
+              </div>
+            </div>
+          </div>
+          <h2 class="description" id="description"></h2>
         </div>
       </div>
       <small
