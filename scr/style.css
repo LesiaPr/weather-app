@@ -114,4 +114,7 @@ a {
   .form {
     padding: 15px 10px 15px;
   }
+  .row {
+    flex-wrap: inherit;
+  }
 }
